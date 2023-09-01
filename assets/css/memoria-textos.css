@@ -1,0 +1,285 @@
+:root{
+  --azul-claro: #00a0e0;
+  --amarelo: #fad91f;
+  --vermelho: #db0632;
+  --azul-escuro: #1947ba;
+  --rosa: #e41395;
+  --laranja: #ff9e1a;
+  --verde: #a1d55d;
+}
+
+#txtInfo{
+  position: absolute;
+  top: 18.5%;
+  left: 0%;
+  width: 100%;
+  font-size: 22px;
+  text-align: center;
+  font-family: var(--thin);
+  display: none;
+}
+.infos-memoria{
+  position: absolute;
+  top: 21%;
+  left: 10%;
+  width: 80%;
+  height: 4.5%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  opacity: 0;
+  transition: all 1s;
+}
+.container-count-down,.btn-embaralhar{
+  width: 45%;
+  height: calc(100% - 10px);
+  border-radius: 20px;
+  border: solid 5px var(--azul);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-family: var(--bold);
+  font-size: 20px;
+  color: var(--azul);
+}
+.container-count-down #countdown{
+  font-family: var(--bold);
+  font-size: 30px;
+  margin-left: 15px;
+  margin-top: -2.1px;
+}
+.btn-embaralhar{
+  background-color: var(--azul);
+  color: white;
+  /*word-spacing: 10px;*/
+  /*box-shadow: 0px 0px 30px 1px var(--azul);*/
+  box-shadow: 0px 0px 0px 0px var(--azul);
+  animation: animarBtnEmbaralhar 2s linear infinite;
+}
+@keyframes animarBtnEmbaralhar{
+  0%{
+    box-shadow: 0px 0px 0px 0px rgba(25, 71, 186,1);
+  }
+  40%{
+    box-shadow: 0px 0px 30px 1px rgba(25, 71, 186,1);
+  }
+  90%{
+    box-shadow: 0px 0px 30px 1px rgba(25, 71, 186,0);
+  }
+  95%{
+    box-shadow: 0px 0px 0px 0px rgba(25, 71, 186,0);
+  }
+}
+
+.container-game-memoria,.container-game-memoria-animacao{
+  position: absolute;
+  top: 27%;
+  width: 74%;
+  left: 13%;
+}
+.container-game-memoria-animacao{
+  display: none;
+}
+.container-game-memoria{
+  display: none;
+}
+.flip-card,.flip-card-animacao{
+	float: left;
+	width: 17vw;
+	margin-right: 1.5vw;
+	height: 25vw;
+	margin-bottom: 2vw;
+	perspective: 1000px;
+	cursor: pointer;
+}
+.flip-card-animacao{
+  position: absolute!important;
+  width: 17vw;
+  height: 25vw;
+  perspective: 1000px;
+  cursor: pointer;
+  transition: all 1s;
+}
+#cA1{
+  top: 0vw;
+  left: 0vw;
+}
+#cA1-2{
+  top: 0vw;
+  left: 18.5vw;
+}
+#cA2{
+  top: 0vw;
+  left: calc(18.5vw*2);
+}
+#cA2-2{
+  top: 0vw;
+  left: calc(18.5vw*3);
+}
+
+#cA3{
+  top: 27vw;
+  left: 0vw;
+}
+#cA3-2{
+  top: 27vw;
+  left: 18.5vw;
+}
+#cA4{
+  top: 27vw;
+  left: calc(18.5vw*2);
+}
+#cA4-2{
+  top: 27vw;
+  left: calc(18.5vw*3);
+}
+
+
+#cA5{
+  top: calc(27vw*2);
+  left: 0vw;
+}
+#cA5-2{
+  top: calc(27vw*2);
+  left: 18.5vw;
+}
+#cA6{
+  top: calc(27vw*2);
+  left: calc(18.5vw*2);
+}
+#cA6-2{
+  top: calc(27vw*2);
+  left: calc(18.5vw*3);
+}
+
+#cA7{
+  top: calc(27vw*3);
+  left: 0vw;
+}
+#cA7-2{
+  top: calc(27vw*3);
+  left: 18.5vw;
+}
+#cA8{
+  top: calc(27vw*3);
+  left: calc(18.5vw*2);
+}
+#cA8-2{
+  top: calc(27vw*3);
+  left: calc(18.5vw*3);
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.7s;
+  transform-style: preserve-3d;
+}
+.flipCardInner1-2 .flip-card-back,.flipCardInner2-2 .flip-card-back,.flipCardInner3-2 .flip-card-back,.flipCardInner4-2 .flip-card-back,.flipCardInner5-2 .flip-card-back,.flipCardInner6-2 .flip-card-back,.flipCardInner7-2 .flip-card-back{
+  width: calc(100% - 50px);
+  height: calc(100% - 50px);
+  box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.2);
+  border-radius: 30px;
+  font-family: GothamBook;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: black;
+}
+
+.flipCardInner1-2 .flip-card-back{
+  border: solid 25px var(--azul-claro);
+}
+.flipCardInner2-2 .flip-card-back{
+  border: solid 25px var(--amarelo);
+}
+.flipCardInner3-2 .flip-card-back{
+  border: solid 25px var(--vermelho);
+}
+.flipCardInner4-2 .flip-card-back{
+  border: solid 25px var(--azul-escuro);
+}
+.flipCardInner5-2 .flip-card-back{
+  border: solid 25px var(--rosa);
+}
+.flipCardInner6-2 .flip-card-back{
+  border: solid 25px var(--laranja);
+}
+.flipCardInner7-2 .flip-card-back{
+  border: solid 25px var(--verde);
+}
+
+
+.flipCardInner1-2 .flip-card-back span,.flipCardInner2-2 .flip-card-back span,.flipCardInner3-2 .flip-card-back span,.flipCardInner4-2 .flip-card-back span,.flipCardInner5-2 .flip-card-back span,.flipCardInner6-2 .flip-card-back span,.flipCardInner7-2 .flip-card-back span{
+  width: 90%;
+  font-size: 1.35vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+/*.flip-card:hover .flip-card-inner {*/
+/*}*/
+.flip{
+  transform: rotateY(180deg) !important;
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: rgba(229,229,229,0);
+  color: black;
+}
+.flip-card-front img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+}
+.flip-card-inner img{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0%;
+  left: 0%;
+  box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.2);
+  border-radius: 30px;
+}
+
+/* Style the back side */
+.flip-card-back {
+  color: white;
+  transform: rotateY(180deg);
+}
+#btnVoltar{
+  position: absolute;
+  bottom: 6%;
+  left: 7%;
+  width: 9%;
+  height: 4%;
+}
+#imgVoltar1{
+  position: absolute;
+  left: 0;
+  opacity: 1;
+  transition: all 0.6s;
+}
+#imgVoltar2{
+  position: absolute;
+  left: 35%;
+  transition: all 0.5s;
+}
