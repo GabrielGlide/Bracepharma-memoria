@@ -71,10 +71,15 @@
 	var __segundos=45;
 	var __timeoutCronometro;
 
-    // var audClick = new Audio('assets/audio/click.wav');
-    // var audCerto = new Audio('assets/audio/certo.wav');
-    // var audErro = new Audio('assets/audio/erro.wav');
-    // var audTrilha = new Audio('assets/audio/trilha.mp3');
+
+    
+    var preStart =  new Audio('assets/som/pre-init.mp3');
+    var alert =  new Audio('assets/som/alert.mp3');
+    var clockI = new Audio('assets/som/initial-clock.mp3');
+    var piep = new Audio('assets/som/piep.mp3');
+
+    var success = new Audio('assets/som/success.mp3');
+    var error =  new Audio('assets/som/error.mp3');
 
     var _minutos = 0;
     var _tempo = 45;
@@ -85,8 +90,10 @@
     // audTrilha.volume = 0;.03;
 
     $(window).on("load",function(){
+        preStart.play();
+        preStart.playbackRate = 2;
 		let _delay =400;
-        $(".cronometro").show("fade",500);
+        $(".titulo").show("fade",800);
 		$(".cartas__peca").delay(500).each(function(){
 			$(this).delay(_delay).show("fade",200);
 			_delay += 250;
@@ -100,6 +107,9 @@
         setTimeout(() => {
             $(".block-inicio").hide();
             cronometro();
+            
+            clockI.play();
+            clockI.volume = 1;
         }, 3600);
 	})
 
@@ -139,7 +149,7 @@
     }
 
     function perderCarta(p) {
-        // audErro.play();
+        error.play();
         console.log("perdi");
         $(p).find("img").addClass("erro");
         $("#" + _cartaAnt).addClass("erro");
@@ -159,7 +169,7 @@
     }
 
     function ganhouCarta(p) {
-        // audCerto.play();
+        success.play();
         
         _acertos++;
         // $(p).find("img").hide("fade");
@@ -178,22 +188,6 @@
         }
     }
 
-    function finalizarGame(){
-        $.ajax({
-            url: "save-pontuation-ajax",
-            type: "POST",
-            data: "pontos="+_pontos+"&tema="+__tema+"&tempo="+__tempo,
-            dataType: "html"
-        }).done(function(resposta) {
-            console.log(resposta);
-            setTimeout(() => {
-                location.href = "final?pontos=" + _pontos+"&tema="+ __tema;    
-            }, 1000);
-            
-        }).fail(function(jqXHR, textStatus ) {
-            console.log("Request failed: " + textStatus);
-        });
-    }
 
     function cronometro(){
 		__tempoResposta++;
@@ -213,10 +207,23 @@
 				__tempoAcabou =1;	
 			}
 
+
+            if(__segundos == 30){
+                alert.play();
+            }
+            if(__segundos ==20){
+                alert.play();
+            }
+            if(__segundos == 14){
+                piep.play();
+                clockI.pause();
+            }
             if(__segundos> 20 && __segundos <=  30){
+                
                 $("#countdown-number").css("color","#FFC46C");
                 $(".main-circle circle").css("stroke","#FFC46C");
             }else if(__segundos> 10 && __segundos <=  20){
+
                 $("#countdown-number").css("color","#FF9B05");
                 $(".main-circle circle").css("stroke","#FF9B05");
             }else if(__segundos> 0 && __segundos <=  10){
@@ -241,13 +248,43 @@
 	}
 
     function calcularPontos(tempo, cartasAcertadas) {
-        var pontosPorCarta = 500;
-        var penalidadePorSegundo = 10;
-        var pontuacaoBase = cartasAcertadas * pontosPorCarta;
-        var penalidadePorTempo = __tempo * penalidadePorSegundo;
-        var pontuacaoFinal = pontuacaoBase - penalidadePorTempo;
+        var pontuacaoFinal
+        if(cartasAcertadas ==3){
+            if(tempo >= 32){
+                pontuacaoFinal = 400;
+            }else if(tempo > 28 && tempo < 32){
+                pontuacaoFinal = 300;
+            }else{
+                pontuacaoFinal = 200;
+            }
+        
+        }else if( cartasAcertadas == 2){
+            pontuacaoFinal = 200;
+        }else if(cartasAcertadas == 1){
+            pontuacaoFinal =100;
+        }else{
+            pontuacaoFinal =0;
+        }
+        
         console.log(pontuacaoFinal);
 
-        return Math.max(pontuacaoFinal, 0);        
+        return pontuacaoFinal;        
+    }
+
+    function finalizarGame(){
+        $.ajax({
+            url: "save-pontuation-ajax",
+            type: "POST",
+            data: "pontos="+_pontos+"&tema="+__tema+"&tempo="+__tempo,
+            dataType: "html"
+        }).done(function(resposta) {
+            console.log(resposta);
+            setTimeout(() => {
+                location.href = "final?pontos=" + _pontos+"&tema="+ __tema;    
+            }, 500);
+            
+        }).fail(function(jqXHR, textStatus ) {
+            console.log("Request failed: " + textStatus);
+        });
     }
 </script>

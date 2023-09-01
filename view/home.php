@@ -13,11 +13,12 @@
     <div class="btn-iniciar">
         Toque na tela<br> para Iniciar
     </div>
+    <div class="fundo"></div>
 
     <img src="assets/img/logo.png" id="logo">
 
     <div class="logos-produtos">
-        <img src="assets/img/logos/6-color.png">
+        <img src="assets/img/logos/1-color.png">
     </div>
 
 </div>
@@ -27,10 +28,16 @@
         location.href="intrucoes";
     });
 
-    // $(window).on("load",function(){
-    //     animarCartas(1,1,4);
-    //     animarCartas(5,5,7);
-    // });
+    $(window).on("load",function(){
+        $("#logo").show("fade",500);
+        $(".fundo-logos").delay(300).show("slide",{direction:"down"},800);
+        $(".btn-iniciar").delay(600).show("fade",500);
+        $(".fundo").delay(600).show("fade",500);
+        $(".logos-produtos").delay(1000).show("fade",500);
+        setTimeout(() => {
+            trocarLogo();    
+        }, 3000);
+    });
 
     // var __btnEngrenagem=0;
     // function somarEngrenagem(){
@@ -40,26 +47,21 @@
     //     }
     // }
 
-    // function animarCartas(_cartaAtual,_min,_max){
-    //     // $("#containerCartasHome").children("img").each(()=>{
-    //         // $(this).removeClass("animar-carta");
-    //     // });
-    //     setTimeout(()=>{
-    //         $("#cartaHome"+_cartaAtual).addClass("animar-carta");
-    //         setTimeout(()=>{
-    //             $("#cartaHome"+_cartaAtual).children(".flip-card-inner").addClass("flip");
-    //         },400);
-    //         console.log(_max+","+_min+","+_cartaAtual);
-    //         setTimeout(()=>{
-    //             $("#cartaHome"+_cartaAtual).removeClass("animar-carta");
-    //             // setTimeout(()=>{
-    //                 $("#cartaHome"+_cartaAtual).children(".flip-card-inner").removeClass("flip");
-    //             // },400);
-    //             _cartaAtual++;
-    //             if(_cartaAtual>_max)
-    //                 _cartaAtual=_min;
-    //             animarCartas(_cartaAtual,_min,_max);
-    //         },2000);
-    //     },200)
-    // }
+    var __logo = 1;
+
+    function trocarLogo(){
+        $(".logos-produtos").hide("fade",500);
+        
+        setTimeout(() => {
+            $(".logos-produtos img").attr('src','assets/img/logos/'+__logo+'-color.png');   
+        $(".logos-produtos").delay(500).show("fade",500);    
+        }, 500);
+        
+        if(__logo == 6){
+            __logo=1; 
+        }else{
+            __logo++;
+        }
+        setTimeout(trocarLogo, 6000);
+    }
 </script>

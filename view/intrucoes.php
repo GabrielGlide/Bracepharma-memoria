@@ -12,7 +12,7 @@
             <br><br>
             Ao final da partida, caso o tempo acabe ou você finalize, sua pontuação será calculada com base nos seus acertos e a duração da partida. 
             <br><br>
-            Não se esqueça: você só poderá jogar uma única vez. 
+            Participe e divirta-se.
         </div>
         <div class="boa-sorte">Boa sorte!</div>
     </div>
@@ -30,4 +30,13 @@
     $(".btn").on("click",function(){
         location.href="cadastro";
     });
+
+    $(window).on("load",function(){
+        $(".titulo").show("fade",600);
+        $(".regras-subtitulo").delay(300).show("fade",600);
+        $(".regras").delay(600).show("fade",600);
+        $(".boa-sorte").delay(1100).show("fade",600);
+        $(".btn").delay(1600).show("fade",600);
+        $(".btn-voltar").delay(2000).show("fade",600);
+    })
 </script>

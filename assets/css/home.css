@@ -9,8 +9,9 @@
     background-repeat: no-repeat;
 }
 .fundo-logos{
+    display: none;
     position: absolute;
-    bottom: 0;
+    bottom: -4px;
     right: 0;
     width: 100%;
     z-index: 1;
@@ -19,6 +20,7 @@
     width: 100%;
 }
 #logo{
+    display: none;
     position: absolute;
     width: 315px;
     top: 80px;
@@ -26,6 +28,7 @@
 }
 
 .logos-produtos{
+    display: none;
     position: absolute;
     width: 502.4832763671875px;
     top: 84%;
@@ -39,6 +42,7 @@
     object-fit: contain;
 }
 .btn-iniciar{
+    display: none;
     position: absolute;
     width: 300px;
     height: 190px;
@@ -58,4 +62,40 @@
     line-height: 42px;
     padding-top: 110px;
 
+    animation: text-gradient 2s ease-in-out alternate infinite;
+    z-index: 2;
+}
+.fundo{
+    display: none;
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    top: 574px;
+    left: 390px;
+    border: 4px solid rgba(255, 255, 255, 1);
+    animation: bg-text-gradient 2s ease-in-out   alternate infinite;
+}
+@keyframes text-gradient {
+    0%{
+        background: transparent;
+        scale: 1;
+    }
+    100%{
+        background: linear-gradient(80deg, #0078D1 8.21%, #00DF91 72.08%);
+        background-clip: text;
+        -webkit-background-clip: text;
+        -webkit-text-fill-color: transparent;
+        scale: 1.2;
+    }
+}
+@keyframes bg-text-gradient {
+    0%{
+        background: transparent;
+        scale: 1;
+    }
+    100%{
+        background: white;
+        scale: 1.2;
+    }
 }

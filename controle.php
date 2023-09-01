@@ -28,6 +28,7 @@ switch ($page) {
 		break;
 	case 'save-pontuation-ajax':
 		atualizarDadosUsario($_SESSION['idJogador'],$_POST['pontos'],$_POST['tema'],$_POST['tempo']);
+		$is_page = false;
 		break;
 	
 }

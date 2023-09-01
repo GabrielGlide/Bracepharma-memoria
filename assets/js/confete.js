@@ -9,13 +9,13 @@ rand = (min, max) => Math.random() * (max - min) + min;
 // params to play with
 const confettiParams = {
     // number of confetti per "explosion"
-    number: 200,
+    number: 100,
     // min and max size for each rectangle
     size: { x: [5, 20], y: [10, 18] },
     // power of explosion
     initSpeed: 30,
     // defines how fast particles go down after blast-off
-    gravity: 0.65,
+    gravity: 0.95,
     // how wide is explosion
     drag: 0.08,
     // how slow particles are falling
@@ -81,6 +81,8 @@ function Conf() {
 }
 
 function updateConfetti () {
+    
+    // console.log("explosion")
     confettiCtx.clearRect(0, 0, container.w, container.h);
 
     confettiElements.forEach((c) => {
@@ -105,6 +107,7 @@ function updateConfetti () {
 }
 
 function setupCanvas() {
+    console.log("explosion")
     container = {
         w: confetti.clientWidth,
         h: confetti.clientHeight
@@ -114,6 +117,7 @@ function setupCanvas() {
 }
 
 function addConfetti(e) {
+    
     const canvasBox = confetti.getBoundingClientRect();
     if (e) {
         clickPosition = [

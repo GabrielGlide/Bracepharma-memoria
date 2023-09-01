@@ -52,7 +52,20 @@
     
 
     $(window).on('load',function(){
-        // crmCadastrados = JSON.parse(crmCadastrados);
+        let _delay = 250; 
+        $(".titulo").show("fade",600);
+        $("#grafismoTop1").show("blind",{direction:"left"},1500);
+        $(".input").delay(300).each(function(){
+            $(this).delay(_delay).show("blind",{direction:"left"},800);
+            _delay += 200;
+        })
+        $("#grafismoTop2").delay(2600).show("blind",{direction:"up"},1500);
+        $(".campo-uf").delay(3000).show("fade",500);
+        $("#infoCrm").delay(3000).show("blind",{direction:"left"},800);
+        $("#terms").delay(2800).show("fade",500);
+        $(".btn-confirmar").delay(3200).show("fade",500);
+        $(".simple-keyboard").delay(3600).show("fade",500);
+        $(".btn-voltar").delay(4000).show("fade",600);
         console.log(crmCadastrados)
     });
 
@@ -78,14 +91,14 @@
     function validateName() {
         const name = txtNome.value.trim(); // Trim any leading or trailing whitespace
 
-        if (name == '') {
+        if (name.length == 1) {
             // Invalid Name
             txtNome.classList.remove('certo-input');
             txtNome.classList.add('erro-input');
-            $("#txtNome").attr("placeholder","Escreva um nome válido");
+            $("#txtNome").val("Escreva um nome válido");
             setTimeout(() => {
                 txtNome.classList.remove('erro-input');
-                $("#txtNome").attr("placeholder","Nome");
+                $("#txtNome").val(name);
             }, 1500);
             __validaNome = false;
             isFormValidated = false;
@@ -110,7 +123,7 @@
         // Regular expression for email validation
         const emailRegex = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
         
-        if (emailRegex.test(email)) {
+        if (emailRegex.test(email) || email == '') {
             // Valid email address
             txtEmail.classList.remove( 'erro-input');
             txtEmail.classList.add('certo-input');
@@ -122,10 +135,10 @@
             // Invalid email address
             txtEmail.classList.add('erro-input');
             txtEmail.classList.remove('certo-input');
-            $("#txtEmail").attr("placeholder","Escreva uma e-mail válido");
+            $("#txtEmail").val("Escreva uma e-mail válido");
             setTimeout(() => {
                 txtEmail.classList.remove('erro-input');
-                $("#txtEmail").attr("placeholder","E-mail");
+                $("#txtEmail").val(email);
             }, 1500);
             isFormValidated = false;
             __validaEmail =false;
@@ -208,37 +221,37 @@
             crmValue = combinedCRM;
 
 
-            for (let x = 0; x < crmCadastrados.length; x++) {
-                var verificaValor = crmCadastrados[x][0];
+            // for (let x = 0; x < crmCadastrados.length; x++) {
+            //     var verificaValor = crmCadastrados[x][0];
 
-                console.log(crmCadastrados[x][0])
-                console.log(crmValue)
-                if(crmValue == verificaValor.trim()){
-                    isCRMValid = false;
-                    console.log("verificaValor: "+verificaValor);
-                    console.log("crm: "+crm);
-                    console.log('CRM ja cadastrado');
-                    $("#txtCrm").addClass("erro-input");
-                    txtCrm.classList.remove('certo-input');
+            //     console.log(crmCadastrados[x][0])
+            //     console.log(crmValue)
+            //     if(crmValue == verificaValor.trim()){
+            //         isCRMValid = false;
+            //         console.log("verificaValor: "+verificaValor);
+            //         console.log("crm: "+crm);
+            //         console.log('CRM ja cadastrado');
+            //         $("#txtCrm").addClass("erro-input");
+            //         txtCrm.classList.remove('certo-input');
 
 
-                    $("#txtCrm").val("Seu CRM já foi cadastrado.");
-                    setTimeout(() => {
-                        $("#txtCrm").val(crm)
-                        $("#txtCrm").attr("placeholder","CRM");
-                        txtCrm.classList.remove("erro-input");
+            //         $("#txtCrm").val("Seu CRM já foi cadastrado.");
+            //         setTimeout(() => {
+            //             $("#txtCrm").val(crm)
+            //             $("#txtCrm").attr("placeholder","CRM");
+            //             txtCrm.classList.remove("erro-input");
                     
-                    }, 1500);
-                    return false;
-                    isFormValidated = false;
-                }else{
+            //         }, 1500);
+            //         return false;
+            //         isFormValidated = false;
+            //     }else{
                     txtCrm.classList.remove( 'erro-input');
                     txtCrm.classList.add('certo-input');
                     $("#inputUF").addClass("certo-input");
                     isCRMValid = true;
-                }
+                // }
                 
-            }
+            // }
             
             console.log('CRM is valid');
 

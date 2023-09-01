@@ -128,9 +128,12 @@ a{
   bottom: 20px;
   left: 56px;
   font-family: 'Montserrat-Regular';
-  display: flex;
+  display: none;
   flex-direction: column;
   align-items: center;
+}
+.btn-voltar[style*='display: block']{
+  display: flex !important;
 }
 .btn-voltar .flecha{
   width: 100px;

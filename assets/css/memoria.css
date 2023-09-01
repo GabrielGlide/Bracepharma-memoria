@@ -69,6 +69,7 @@
 }
 
 .titulo{
+  display: none;
   position: absolute;
   top: 65px;
   left: 245px;
@@ -89,6 +90,7 @@
   line-height: normal;
 }
 .logo{
+
   width: 315px;
   margin-bottom: 10px;
 }
@@ -104,13 +106,23 @@
   font-size: 28px;
   line-height: 140%;
   color: white;
-  /* display: none; */
-  scale: 3;
-  align-items: center;
   background: url('../img/game/bg-countdown.png');
   background-repeat: no-repeat;
   background-position: top;
-  background-size: 85% 85%;
+  background-size: 83% 83%;
+  scale: 0;
+  opacity: 0;
+  animation: fade 2s ease 1s forwards;
+}
+@keyframes fade {
+  0%{
+    scale: 0;
+    opacity: 0;
+  }
+  100%{
+    scale: 3;
+    opacity: 1;
+  }
 }
 .container-count-down[style*='display: block']{
   display: flex !important;
@@ -149,7 +161,7 @@
   stroke: white;
   transition: stroke 1s;
   fill: none;
-  animation: countdown 45s linear 4s infinite forwards;
+  animation: countdown 45s linear 4s forwards;
   transform: scale(2.55);
   
 }

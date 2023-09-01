@@ -9,6 +9,7 @@
     background-repeat: no-repeat;
 }
 .titulo{
+    display: none;
     position: absolute;
     top: 170px;
     left: 50%;
@@ -32,6 +33,7 @@
     color: white;
 }
 .regras-subtitulo{
+    display: none;
     font-family: 'Montserrat-SemiBold';
     font-size: 54px;
     font-weight: 600;
@@ -39,6 +41,7 @@
     margin-bottom: 140px;
 }
 .regras{
+    display: none;
     font-family: 'Montserrat-Regular';
     font-size: 35px;
     line-height: 43px;
@@ -46,6 +49,7 @@
     margin-bottom: 50px;
 }
 .boa-sorte{
+    display: none;
     font-family: 'Montserrat-Bold';
     font-size: 55px;
     font-weight: 700;
@@ -53,6 +57,7 @@
     text-align: center;    
 }
 .btn{
+    display: none;
     position: absolute;
     left: 50%;
     transform: translateX(-50%);
