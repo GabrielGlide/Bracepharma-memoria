@@ -59,7 +59,7 @@
             fail.play();
             setTimeout(function(){
                 location.href="home";
-            },3000);
+            },5000);
         }else{
 
             setTimeout(function(){
